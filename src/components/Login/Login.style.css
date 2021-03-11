@@ -1,0 +1,88 @@
+.container{
+    background-color: #2a2b38;
+    color: white;
+    padding: 50px 20px;
+    width: 35%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column; 
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 5px 2px black;
+    /* justify-content: center; */
+}
+.input-wrapper{
+    padding: 20px;
+    /* background-color: yellow; */
+    /* background-color: violet; */
+    width: 90%;
+    margin: 0 auto;
+
+}
+
+.allthree{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 90%;
+    padding: 12px 10px;
+    margin: 10px 10px ;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-shadow: 0 2px 2px 2px black;
+    font-size: 15px;
+}
+
+.container button{
+    padding: 10px 40px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-shadow: 0 2px 2px 2px black;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.container button:hover{
+    background-color: #4c8bf5;
+    color: white;
+
+}
+
+.container button:active{
+    transform: translateY(2px);
+}
+
+@media(max-width:1100px) {
+    .container {
+        width: 50%;
+    }
+}
+
+@media(max-width:800px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media(max-width:600px){
+    .container {
+        width: 80%;
+    }
+}
+
+@media(max-width:450px) {
+    .container {
+        width: 90%;
+    }
+}
+

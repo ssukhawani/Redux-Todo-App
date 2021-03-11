@@ -1,0 +1,11 @@
+.Buttons-div{
+    /* background-color: blueviolet; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
+    bottom: -12%;
+}
+.btns{
+    /* background-color: burlywood; */
+    margin: 0 auto;
+}

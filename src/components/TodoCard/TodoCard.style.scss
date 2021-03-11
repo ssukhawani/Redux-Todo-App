@@ -1,0 +1,71 @@
+.todo-card{
+    width: auto;
+    height: 170px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 1px 5px rgb(138, 137, 137);
+    position: relative;
+
+}
+
+.taskdone{
+    background-color: rgb(138, 137, 137);
+    box-shadow:inset 0 1px 5px rgba($color: #000000, $alpha: 0.5);
+    // background-image: url(https://img.icons8.com/color/48/000000/checkmark--v2.png);
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: contain;
+}
+
+.backImage{
+    display: flex;
+    position: relative;
+    bottom: 30%;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+#buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    position: absolute;
+    width: 100%;
+    // background-color: aquamarine;
+    // bottom: -12%;
+    bottom: 0;
+    visibility: hidden;
+    .btns {
+        margin: 0 35%;
+        border-radius: 10%;
+        // box-shadow: 0 1px 2px rgb(138, 137, 137);
+
+    }
+}
+
+.todo-card:hover{
+
+    cursor: pointer;
+
+    #buttons{
+        visibility: visible;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+    .todo-card {
+        height: 140px;
+    }
+
+    #buttons{
+        bottom: -5%;
+    }
+
+}
+
+
+
+
