@@ -23,13 +23,20 @@ const TodoCard = (props)=>{
     } = props;
 
 
-    const handelIsDone= ()=> {
-        toast.info("Task Completed Sucessfully !!");
-        checkedTrue({id:id,true:true})
-        if(active[1]){
-          setActive([true, false, false]);
-        }
-    }
+    const handelIsDone = (checkid) => {
+      toast.info("Task Completed Sucessfully !!");
+
+      if (active[0]) {
+        checkedTrue({ id: id, true: true });
+      } else if (active[1]) {
+        var newid = todoList.findIndex((item, ind) => item.todoid === checkid);
+        checkedTrue({ id: newid, true: true });
+      }
+
+      if (active[1]) {
+        setActive([true, false, false]);
+      }
+    };
 
     const handelDelete = (checkid)=>{
         toast.error("Task Deleted !!");
@@ -80,7 +87,7 @@ const TodoCard = (props)=>{
                 fontSize: "28px",
                 marginBottom: "20px",
               }}
-              onClick={handelIsDone}
+              onClick={() => handelIsDone(item.todoid)}
             />
             <DeleteIcon
               className="btns"

@@ -22,25 +22,6 @@ const reducer=(state={},action)=>{
         };
       }
 
-      case "DEL_INCOMPLETE_TODO": {
-        return {
-          ...state,
-          todoReplica: [
-            ...state.todoDetails.slice(0, action.payload),
-            ...state.todoDetails.slice(action.payload + 1),
-          ],
-        };
-      }
-
-      case "DEL_COMPLETE_TODO": {
-        return {
-          ...state,
-          todoReplica: [
-            ...state.todoDetails.slice(0, action.payload),
-            ...state.todoDetails.slice(action.payload + 1),
-          ],
-        };
-      }
 
       case "UPDATE_TODO": {
         return {
