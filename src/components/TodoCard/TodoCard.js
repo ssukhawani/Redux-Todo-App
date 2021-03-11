@@ -11,17 +11,44 @@ import {Link} from 'react-router-dom'
 
 
 const TodoCard = (props)=>{
-    const { item, id, deleteTodo, checkedTrue, flexRevert } = props;
+    const {
+      item,
+      id,
+      deleteTodo,
+      checkedTrue,
+      flexRevert,
+      active,
+      setActive,
+      todoList
+    } = props;
 
 
     const handelIsDone= ()=> {
         toast.info("Task Completed Sucessfully !!");
         checkedTrue({id:id,true:true})
+        if(active[1]){
+          setActive([true, false, false]);
+        }
     }
 
-    const handelDelete = ()=>{
-        deleteTodo(id);
+    const handelDelete = (checkid)=>{
         toast.error("Task Deleted !!");
+
+        if(active[0]){
+          deleteTodo(id);
+        }else if (active[1]){
+          var newid = todoList.findIndex((item,ind) => item.todoid === checkid);
+          deleteTodo(newid)
+        }else if(active[2]){
+          var newid2 = todoList.findIndex(
+            (item, ind) => item.todoid === checkid
+          );
+          deleteTodo(newid2);
+        }
+
+         if (active[1] || active[2]) {
+              setActive([true, false, false]);
+         }
     }
 
     const handelEdit=()=>{
@@ -58,7 +85,7 @@ const TodoCard = (props)=>{
             <DeleteIcon
               className="btns"
               style={{ fontSize: "28px" }}
-              onClick={() => handelDelete()}
+              onClick={() => handelDelete(item.todoid)}
             />
             <EditIcon
               className={`${item.checked ? "hide" : ""} btns`}
@@ -72,11 +99,20 @@ const TodoCard = (props)=>{
     );
 }
 
+const mapStateToProps = state => ({
+  active:state.active,
+  todoList:state.todoDetails
+})
+
 
 const mapDispatchToProps = (dispatch) => ({
   deleteTodo: (val) => dispatch({ type: "DELETE_TODO", payload: val }),
   checkedTrue: (val) => dispatch({ type: "CHECKED_TRUE", payload: val }),
   flexRevert: (val) => dispatch({ type: "FLEX_REVERT", payload: val }),
+  setActive: (val) => dispatch({ type: "SET_ACTIVE_DIV", payload: val }),
 });
 
-export default connect(null, mapDispatchToProps)(withRouter(TodoCard));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(TodoCard));

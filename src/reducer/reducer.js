@@ -5,8 +5,7 @@ const reducer=(state={},action)=>{
         return {
           ...state,
           todoDetails: [...state.todoDetails, action.payload],
-          todoReplica: [...state.todoDetails, action.payload]
-          
+          todoReplica: [...state.todoDetails, action.payload],
         };
       }
       case "DELETE_TODO": {
@@ -23,7 +22,27 @@ const reducer=(state={},action)=>{
         };
       }
 
-      case "UPDATE_TODO":{
+      case "DEL_INCOMPLETE_TODO": {
+        return {
+          ...state,
+          todoReplica: [
+            ...state.todoDetails.slice(0, action.payload),
+            ...state.todoDetails.slice(action.payload + 1),
+          ],
+        };
+      }
+
+      case "DEL_COMPLETE_TODO": {
+        return {
+          ...state,
+          todoReplica: [
+            ...state.todoDetails.slice(0, action.payload),
+            ...state.todoDetails.slice(action.payload + 1),
+          ],
+        };
+      }
+
+      case "UPDATE_TODO": {
         return {
           ...state,
           todoDetails: [
@@ -94,10 +113,11 @@ const reducer=(state={},action)=>{
         };
       }
 
-      case "SET_ACTIVE_DIV":{
+      case "SET_ACTIVE_DIV": {
         return {
-          ...state,active:action.payload
-        }
+          ...state,
+          active: action.payload,
+        };
       }
 
       default: {

@@ -11,9 +11,9 @@ import "material-react-toastify/dist/ReactToastify.css";
 
 
 const AddTodo = (props)=>{
-
+    var no = 0;
     const [isexpanded, setExpanded] = useState(false)
-    const [tempTodo, setTempTodo] = useState({checked:false,title:"",content:""})
+    const [tempTodo, setTempTodo] = useState({checked:false,title:"",content:"",todoid:no})
     const { addTodoDetails, flexRevert } = props;
 
 
@@ -24,14 +24,16 @@ const AddTodo = (props)=>{
     const handelChange = (e)=>{
 
         setTempTodo({...tempTodo,[e.target.name]:e.target.value})
-        console.log(tempTodo)
+        // console.log(tempTodo)
     }
 
     const handelSubmit = (e)=>{
+        // no = no + 1;
         e.preventDefault();
         addTodoDetails(tempTodo)
-        setTempTodo({title:'',content:""})
-        flexRevert(true)
+        setTempTodo({ ...tempTodo, title: "", content: "", todoid: tempTodo.todoid+1 });
+        flexRevert(true)  
+
     }
 
     const handelOpen = ()=>{

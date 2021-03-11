@@ -7,7 +7,7 @@ const TodoList = (props) =>{
     const { todoList } = props;
 
 
-
+  console.log(todoList)
     return (
       <div className="todo-list-container">
         {todoList &&
