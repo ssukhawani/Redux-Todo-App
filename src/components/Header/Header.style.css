@@ -157,7 +157,7 @@ header h1 {
 }
 @media(max-width:450px) {
     .menu {
-        top: 10px;
+        /* top: 10px; */
         left: 45%;
         width: 48%;
         font-size: 13px;

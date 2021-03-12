@@ -28,12 +28,10 @@ const AddTodo = (props)=>{
     }
 
     const handelSubmit = (e)=>{
-        // no = no + 1;
         e.preventDefault();
         addTodoDetails(tempTodo)
         setTempTodo({ ...tempTodo, title: "", content: "", todoid: tempTodo.todoid+1 });
-        flexRevert(true)  
-
+        flexRevert(true)
     }
 
     const handelOpen = ()=>{
