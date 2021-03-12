@@ -163,11 +163,11 @@ header h1 {
         font-size: 13px;
     }
     .visibility-filter>div{
-        margin: 10px 10px;
-        padding: 10px 20px;
+        margin: 15px 10px;
+        padding: 10px 15px;
     }
     .visibility-filter>div:nth-child(1) {
-        padding: 10px 40px;
+        padding: 10px 30px;
     }
 }
 
