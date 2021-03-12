@@ -1,7 +1,8 @@
 import './Header.style.css'
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import {connect} from 'react-redux'
-// import {useState} from 'react'
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import {withRouter} from 'react-router'
 
 
 
@@ -40,6 +41,11 @@ function Header(props) {
     setActive([true, false, false]);
   }
 
+  const handelLogout= ()=>{
+    localStorage.clear();
+    props.history.push("/")
+  }
+
   
   return (
     <div className="headerWrapper">
@@ -56,6 +62,12 @@ function Header(props) {
             <>
               <h3>{item.username}</h3>
               <span>{item.email}</span>
+              <div style={{ marginTop: "20px" }}>
+                <ExitToAppIcon
+                  style={{ transform: "rotate(180deg)" }}
+                  onClick={() => handelLogout()}
+                />
+              </div>
             </>
           );
         })}
@@ -113,4 +125,4 @@ const mapDispatchToProps = (dispatch) => ({
   setDisplayMenu: (val) => dispatch({ type: "SET_DISPLAY_MENU", payload: val }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
