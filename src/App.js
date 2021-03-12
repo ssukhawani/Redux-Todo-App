@@ -11,6 +11,7 @@ const initVal = {
   todoDetails: [],
   loginDetails: [],
   flex: false,
+  displayMenu:false,
   todoReplica: [],
   active: [true, false, false],
 };

@@ -1,7 +1,7 @@
 import './Header.style.css'
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import {connect} from 'react-redux'
-import {useState} from 'react'
+// import {useState} from 'react'
 
 
 
@@ -17,8 +17,9 @@ function Header(props) {
     initialTodo,
     active,
     setActive,
+    displayMenu,
+    setDisplayMenu,
   } = props;
-  const [displayMenu, setDisplayMenu] = useState(false)
 
 
   const completeActivated=()=>{
@@ -99,14 +100,17 @@ const mapStateToProps = (state) => ({
   logedUser: state.loginDetails,
   flex: state.flex,
   initialTodo: state.todoDetails,
-  active:state.active
+  active:state.active,
+  displayMenu:state.displayMenu
 });
 
 const mapDispatchToProps = (dispatch) => ({
   completeactivated: (val) => dispatch({ type: "COMPLETE", payload: val }),
-  incompleteActivated: (val) => dispatch({ type: "COMPLETE_DATV", payload: val }),
-  allActivated:val=>dispatch({type:"ALL_ACT", payload:val}),
-  setActive: val => dispatch({type:"SET_ACTIVE_DIV",payload:val})
+  incompleteActivated: (val) =>
+    dispatch({ type: "COMPLETE_DATV", payload: val }),
+  allActivated: (val) => dispatch({ type: "ALL_ACT", payload: val }),
+  setActive: (val) => dispatch({ type: "SET_ACTIVE_DIV", payload: val }),
+  setDisplayMenu: (val) => dispatch({ type: "SET_DISPLAY_MENU", payload: val }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

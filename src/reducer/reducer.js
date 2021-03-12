@@ -101,6 +101,12 @@ const reducer=(state={},action)=>{
         };
       }
 
+      case "SET_DISPLAY_MENU":{
+        return {
+          ...state,displayMenu:action.payload
+        }
+      }
+
       default: {
         return state;
       }

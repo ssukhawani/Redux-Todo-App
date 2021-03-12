@@ -14,11 +14,12 @@ const AddTodo = (props)=>{
     var no = 0;
     const [isexpanded, setExpanded] = useState(false)
     const [tempTodo, setTempTodo] = useState({checked:false,title:"",content:"",todoid:no})
-    const { addTodoDetails, flexRevert } = props;
+    const { addTodoDetails, flexRevert, setDisplayMenu } = props;
 
 
     const handelClickTA = ()=>{
         setExpanded(true)
+        setDisplayMenu(false) 
     }
 
     const handelChange = (e)=>{
@@ -91,9 +92,10 @@ const AddTodo = (props)=>{
 }
 
 
-const mapDispatchToProps= dispatch =>({
-    addTodoDetails: val => dispatch({type:"Add_TODO_DETAILS", payload:val}),
-    flexRevert: val => dispatch({type:"FLEX_REVERT", payload: val})
-})
+const mapDispatchToProps = (dispatch) => ({
+  addTodoDetails: (val) => dispatch({ type: "Add_TODO_DETAILS", payload: val }),
+  flexRevert: (val) => dispatch({ type: "FLEX_REVERT", payload: val }),
+  setDisplayMenu: (val) => dispatch({ type: "SET_DISPLAY_MENU", payload: val }),
+});
 
 export default connect(null, mapDispatchToProps)(AddTodo);
