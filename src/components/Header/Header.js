@@ -3,6 +3,8 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import {connect} from 'react-redux'
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import {withRouter} from 'react-router'
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
 
 
@@ -62,11 +64,21 @@ function Header(props) {
             <>
               <h3>{item.username}</h3>
               <span>{item.email}</span>
-              <div style={{ marginTop: "20px" }}>
-                <ExitToAppIcon
-                  style={{ transform: "rotate(180deg)" }}
-                  onClick={() => handelLogout()}
-                />
+              <div style={{ marginTop: "30px" }}>
+                <Tooltip
+                  title="Log out"
+                  aria-label="add"
+                  TransitionComponent={Zoom}
+                  arrow
+                >
+                  <ExitToAppIcon
+                    style={{
+                      transform: "rotate(180deg)",
+                      boxShadow: "0 -2px 2px 2px rgba(0, 0, 0, 0.1)",
+                    }}
+                    onClick={() => handelLogout()}
+                  />
+                </Tooltip>
               </div>
             </>
           );

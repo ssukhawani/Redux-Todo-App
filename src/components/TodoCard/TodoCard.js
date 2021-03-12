@@ -8,6 +8,8 @@ import { ToastContainer, toast } from "material-react-toastify";
 import "material-react-toastify/dist/ReactToastify.css";
 import { withRouter } from "react-router";
 import {Link} from 'react-router-dom'
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 
 
 const TodoCard = (props)=>{
@@ -81,24 +83,45 @@ const TodoCard = (props)=>{
             </p>
           </div>
           <div id="buttons">
-            <CheckCircleIcon
-              className={`${item.checked ? "hide" : ""} btns`}
-              style={{
-                fontSize: "28px",
-                marginBottom: "20px",
-              }}
-              onClick={() => handelIsDone(item.todoid)}
-            />
-            <DeleteIcon
-              className="btns"
-              style={{ fontSize: "28px" }}
-              onClick={() => handelDelete(item.todoid)}
-            />
-            <EditIcon
-              className={`${item.checked ? "hide" : ""} btns`}
-              style={{ fontSize: "28px" }}
-              onClick={handelEdit}
-            />
+            <Tooltip
+              title="Complete"
+              aria-label="add"
+              TransitionComponent={Zoom}
+              arrow
+            >
+              <CheckCircleIcon
+                className={`${item.checked ? "hide" : ""} btns`}
+                style={{
+                  fontSize: "28px",
+                  marginBottom: "20px",
+                }}
+                onClick={() => handelIsDone(item.todoid)}
+              />
+            </Tooltip>
+            <Tooltip
+              title="Delete"
+              aria-label="add"
+              TransitionComponent={Zoom}
+              arrow
+            >
+              <DeleteIcon
+                className="btns"
+                style={{ fontSize: "28px" }}
+                onClick={() => handelDelete(item.todoid)}
+              />
+            </Tooltip>
+            <Tooltip
+              title="Edit"
+              aria-label="add"
+              TransitionComponent={Zoom}
+              arrow
+            >
+              <EditIcon
+                className={`${item.checked ? "hide" : ""} btns`}
+                style={{ fontSize: "28px" }}
+                onClick={handelEdit}
+              />
+            </Tooltip>
           </div>
         </div>
         <ToastContainer />
